@@ -11,7 +11,6 @@ struct MoviewRow: View {
     @StateObject var viewModel = ViewModel()
     var categoryName: String
     var orientation = "horizontal"
-    // var items: [Result]
     var body: some View {
         VStack(alignment: .leading){
             Text(categoryName)
@@ -25,12 +24,12 @@ struct MoviewRow: View {
                         $0.popularity! < $1.popularity!
                     }, id: \.self){
                         item in
-                        NavigationLink(destination: EmptyView()){
+                        NavigationLink(destination: MovieDetail(item: item, orientation: orientation)){
                             MovieItem(item: item, orientation: orientation)
                                 .frame(width: orientation == "horizontal" ? 272:200, height: orientation == "horizontal" ? 200: 380)
                                 .padding(.leading, 16)
-                                
-                                
+                            
+                            
                         }
                     }
                     
@@ -38,7 +37,7 @@ struct MoviewRow: View {
                 
             }
             
-           
+            
         }
         
     }

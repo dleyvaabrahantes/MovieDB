@@ -9,36 +9,34 @@ import SwiftUI
 
 struct ListMovie: View {
     @StateObject var viewModel = ViewModel()
-    @State private var showFavoritesOnly = true
+    @State private var searchtext = ""
     
     var body: some View {
         NavigationView{
-//        ScrollView(showsIndicators: false){
-//            VStack(alignment: .leading){
-//                ForEach(viewModel.movies!, id: \.self){ item in
-//                    ListItemMovie(item: item)
-//
-//                }
-//            }
-//        }
+            
             List{
                 
-                Toggle(isOn: $showFavoritesOnly) {
-                                    Text("Favorites only")
-                }
-                ForEach(viewModel.movies!, id: \.self){ item in
+                ForEach(searchResults, id: \.self){ item in
                     NavigationLink(destination: {
                         EmptyView()
                     }, label: {
                         ListItemMovie(item: item)
                             .padding(.top,5)
                     })
-            }
+                }
                 
             }
-        .navigationTitle("FInd")
+            .searchable(text: $searchtext,prompt: "Enter title name movie...")
+            .navigationTitle("FInd")
         }
         
+    }
+    var searchResults: [Result] {
+        if searchtext.isEmpty {
+            return viewModel.movies!
+        } else {
+            return viewModel.movies!.filter { $0.title!.contains(searchtext) }
+        }
     }
 }
 

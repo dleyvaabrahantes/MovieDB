@@ -17,7 +17,7 @@ struct Result: Decodable, Hashable {
     var release_date: String?
     var runtime: Int?
     var title: String?
-   
+    
     let popularity: Double?
     
     let vote_average: Double?
@@ -26,18 +26,18 @@ struct Result: Decodable, Hashable {
     
     var ratingText: String {
         let rating = Int(vote_average ?? 0.0)
-           let ratingText = (0..<rating).reduce("") { (acc, _) -> String in
-               return acc + "★"
-           }
-           return ratingText
-       }
+        let ratingText = (0..<rating).reduce("") { (acc, _) -> String in
+            return acc + "★"
+        }
+        return ratingText
+    }
     
     var scoreText: String {
-            guard ratingText.count > 0 else {
-                return "n/a"
-            }
-            return "\(ratingText.count)/10"
+        guard ratingText.count > 0 else {
+            return "n/a"
         }
+        return "\(ratingText.count)/10"
+    }
 }
 
 struct Response: Decodable {
@@ -50,7 +50,7 @@ struct Response: Decodable {
 
 
 struct Constant{
-static let imagesBaseUrl = "https://image.tmdb.org/t/p/w500"
+    static let imagesBaseUrl = "https://image.tmdb.org/t/p/w500"
     static let api = "a2ee2cca0adf4dd900e7c0dfa94c5dae"
 }
 
