@@ -24,8 +24,6 @@ struct HomeView: View {
             }
             .navigationBarTitle("MovieDB")
         }
-        
-        
     }
 }
 

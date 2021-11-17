@@ -25,14 +25,9 @@ class ViewModel: ObservableObject {
     func requestCode() {
         let url = URL(string: "https://api.themoviedb.org/4/list/1?page=\(offset)&api_key=\(Constant.api)")!
         let request = URLRequest(url: url)
-        
-      ///  request.setValue("https://developer.marvel.com/", forHTTPHeaderField: "Referer")
-        
         let session = URLSession.shared
         let task = session.dataTask(with: request) {(data, response, error) in
-            
-            
-            
+    
             if let error = error{
                 
                 print(error.localizedDescription)
@@ -58,12 +53,6 @@ class ViewModel: ObservableObject {
         task.resume()
         
         
-    }
-    //Create URL for WebImage object
-    func extractImage(path: String, ext: String)-> URL{
-        
-        
-        return URL(string: "\(path).\(ext)")!
     }
 }
 

@@ -30,7 +30,7 @@ struct ContentView: View {
         TabView(selection: $selection){
             HomeView()
                 .tabItem {
-                    Label("Buscar", systemImage: "house")
+                    Label("Home", systemImage: "house")
                 }
                 .tag(Tab.featured)
             

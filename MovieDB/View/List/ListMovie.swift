@@ -27,7 +27,7 @@ struct ListMovie: View {
                 
             }
             .searchable(text: $searchtext,prompt: "Enter title name movie...")
-            .navigationTitle("FInd")
+            .navigationTitle("Find")
         }
         
     }

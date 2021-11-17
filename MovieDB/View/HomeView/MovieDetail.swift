@@ -13,33 +13,18 @@ struct MovieDetail: View {
     var orientation: String
     
     var body: some View {
-        VStack{
-            VStack(alignment:.leading ){
-                ZStack{
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.3))
-                    WebImage(url: URL(string: orientation == "horizontal" ? Constant.imagesBaseUrl+item.backdrop_path! : Constant.imagesBaseUrl+item.poster_path!  ?? ""))
-                        .resizable()
-                }
+        List{
+            WebImage(url: URL(string: orientation == "horizontal" ? Constant.imagesBaseUrl+item.backdrop_path! : Constant.imagesBaseUrl+item.poster_path!  ))
+                .resizable()
                 .aspectRatio( 16/9, contentMode: .fit)
-                .cornerRadius(8)
-                .shadow(radius: 4)
+                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                 
-                Text(item.title!)
-                    .font(.system(size: 18, weight: .bold, design: .rounded))
-                    .lineLimit(1)
-                HStack {
-                    if !item.ratingText.isEmpty {
-                        Text(item.ratingText).foregroundColor(.yellow)
-                    }
-                    Text(item.scoreText)
-                        .foregroundColor(.black)
-                }
-            }
         }
-         Spacer()
+       //
+        .navigationTitle(item.title!)
+        .navigationBarTitleDisplayMode(.inline)
         }
-        
+    
         
     
 }

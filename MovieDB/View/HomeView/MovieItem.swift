@@ -20,7 +20,7 @@ struct MovieItem: View {
             ZStack{
                 Rectangle()
                     .fill(Color.gray.opacity(0.3))
-                WebImage(url: URL(string: orientation == "horizontal" ? Constant.imagesBaseUrl+item.backdrop_path! : Constant.imagesBaseUrl+item.poster_path!  ?? ""))
+                WebImage(url: URL(string: orientation == "horizontal" ? Constant.imagesBaseUrl+item.backdrop_path! : Constant.imagesBaseUrl+item.poster_path!  ))
                     .resizable()
             }
             .aspectRatio(orientation == "horizontal" ? 16/9 : 9/12, contentMode: .fit)
