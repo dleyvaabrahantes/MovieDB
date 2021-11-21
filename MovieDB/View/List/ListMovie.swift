@@ -18,7 +18,7 @@ struct ListMovie: View {
                 
                 ForEach(searchResults, id: \.self){ item in
                     NavigationLink(destination: {
-                        EmptyView()
+                        MovieDetail(item: item, orientation: "horizontal")
                     }, label: {
                         ListItemMovie(item: item)
                             .padding(.top,5)

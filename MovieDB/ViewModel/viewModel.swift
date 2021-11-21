@@ -24,6 +24,7 @@ class ViewModel: ObservableObject {
     
     func requestCode() {
         let url = URL(string: "https://api.themoviedb.org/4/list/1?page=\(offset)&api_key=\(Constant.api)")!
+      //  let url = URL(string: "\(Constant.baseUrl)/discover/movie?&api_key=\(Constant.api)&language=en-US&sort_by=popularity.desc")!
         let request = URLRequest(url: url)
         let session = URLSession.shared
         let task = session.dataTask(with: request) {(data, response, error) in

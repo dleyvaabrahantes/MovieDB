@@ -13,19 +13,29 @@ struct MovieDetail: View {
     var orientation: String
     
     var body: some View {
-        List{
-            WebImage(url: URL(string: orientation == "horizontal" ? Constant.imagesBaseUrl+item.backdrop_path! : Constant.imagesBaseUrl+item.poster_path!  ))
-                .resizable()
-                .aspectRatio( 16/9, contentMode: .fit)
-                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+        ScrollView{
+            VStack{
+                WebImage(url: URL(string: orientation == "horizontal" ? Constant.imagesBaseUrl+item.backdrop_path! : Constant.imagesBaseUrl+item.poster_path!  ))
+                    .resizable()
+                    .aspectRatio( 16/9, contentMode: .fit)
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                 
+                
+                Text(item.title ?? "Loading...")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    
+                    .padding(.horizontal)
+                
+                
+            }
         }
-       //
+        //
         .navigationTitle(item.title!)
         .navigationBarTitleDisplayMode(.inline)
-        }
+    }
     
-        
+    
     
 }
 

@@ -52,5 +52,6 @@ struct Response: Decodable {
 struct Constant{
     static let imagesBaseUrl = "https://image.tmdb.org/t/p/w500"
     static let api = "a2ee2cca0adf4dd900e7c0dfa94c5dae"
+    static let baseUrl = "https://api.themoviedb.org/4"
 }
 
